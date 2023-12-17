@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>This is homepage</h2>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Musician Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Album Ratin</th>
+            <th scope="col">Instrument Type</th>
+            <th scope="col">Album Name</th>
+            <th scope="col">Release Date</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for dt in data%}
+          <tr>
+            <th scope="row">{{dt.id}}</th>
+            <th scope="row">{{dt.ablum_name}}</th>
+            <td>{{dt.musician.first_name}}</td>
+            <td>{{dt.rating}}</td>
+            <td>{{dt.musician.first_name}}</td>
+            <td>{{dt.ablum_name}}</td>
+            <td>{{dt.album_release_date}}</td>
+            <th>
+              <a class='btn btn-warning' href="{%url 'edit_album' dt.id%}">Edit</a>
+              <a class='btn btn-danger' href="{%url 'delete_album' dt.id%}">Delete</a>
+            </th>
+          </tr>
+         {%endfor%}
+        </tbody>
+      </table>
+{% endblock %}
